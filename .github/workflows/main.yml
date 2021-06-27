@@ -3,10 +3,10 @@ name: Simple Workflow
 on:
     workflow_dispatch:
         inputs:
-              environment:
-                description: 'Define env name'     
+              user_input:
+                description: 'input your variable     
                 required: true
-                default: 'prod'
+                default: 'test'
 jobs:
 
     TIMESTAMP:
@@ -19,6 +19,9 @@ jobs:
             cp ./scripts/main.py ./.github/actions/action_1.2/main.py
         - name: 1.2 EXECUTING THE PYTHON SCRIPT
           uses: ./.github/actions/action_1.2
+        - name: echo user input
+        run: | 
+            echo "Env: ${{ github.event.inputs.user_input }}" 
         - name: 1.3 DOWNLOAD ARTIFACT
           uses: actions/upload-artifact@v2
           with:
