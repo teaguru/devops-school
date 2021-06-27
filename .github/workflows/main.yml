@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
         inputs:
               user_input:
-                description: 'input your variable     
+                description: 'input your variable:'  
                 required: true
                 default: 'test'
 jobs:
