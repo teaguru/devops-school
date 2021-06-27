@@ -14,16 +14,11 @@ jobs:
 
         steps:
         - uses: actions/checkout@v2
-        - name: 1.1 UPLOADING FILES
-          run: |
-            cp ./scripts/main.py ./.github/actions/action_1.2/main.py
-        - name: 1.2 EXECUTING THE PYTHON SCRIPT
-          uses: ./.github/actions/action_1.2
         - name: echo user input
           run: | 
-            echo "Env: ${{ github.event.inputs.user_input }}" 
+            echo ${{ github.event.inputs.user_input }}" >> output.txt
         - name: 1.3 DOWNLOAD ARTIFACT
           uses: actions/upload-artifact@v2
           with:
-              name: log.md
-              path: /home/runner/work/devops-school/devops-school/log.md
+              name: output.txt
+              path: /home/runner/work/devops-school/devops-school/output.txt
